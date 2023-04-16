@@ -19,12 +19,13 @@ int main(void)
 		float SHIFT = 5;// Коэффициент сдвиг
 		float Scaling = 1.015;	// Коэффициент маштабирования
 		float Turn = 0.025;	// Угол в радианах на который вращаем
-		float xc, yc;	// средний х
-		float Xc, Yc;	// средний y
+		float xc, yc;	// средний х, y
+
+		//float Xc, Yc;	// средний y
 
 
-		float x1 = 260, x2 = 360, x3 = 420;
-		float y1 = 440, y2 = 240, y3 = 570;
+		float x1 = 260, x2 = 460, x3 = 260;
+		float y1 = 240, y2 = 240, y3 = 570;
 
 		/*float FIG[3][3] = { {x1, y1, 1}, {x2, y2, 1}, {x3, y3, 1} };
 
@@ -92,12 +93,12 @@ int main(void)
 				x3 -= xc;
 				y3 -= yc;
 
-				x1 = (x1 * cos(-Turn)) - (y1 * sin(-Turn));
-				y1 = (x1 * sin(-Turn)) + (y1 * cos(-Turn));
-				x2 = (x2 * cos(-Turn)) - (y2 * sin(-Turn));
-				y2 = (x2 * sin(-Turn)) + (y2 * cos(-Turn));
-				x3 = (x3 * cos(-Turn)) - (y3 * sin(-Turn));
-				y3 = (x3 * sin(-Turn)) + (y3 * cos(-Turn));
+				x1 = ((x1 * cos(-Turn)) - (y1 * sin(-Turn))) * 1.0003125;
+				y1 = ((x1 * sin(-Turn)) + (y1 * cos(-Turn))) * 1.0003125;
+				x2 = ((x2 * cos(-Turn)) - (y2 * sin(-Turn))) * 1.0003125;
+				y2 = ((x2 * sin(-Turn)) + (y2 * cos(-Turn))) * 1.0003125;
+				x3 = ((x3 * cos(-Turn)) - (y3 * sin(-Turn))) * 1.0003125;
+				y3 = ((x3 * sin(-Turn)) + (y3 * cos(-Turn))) * 1.0003125;
 
 				x1 += xc;
 				y1 += yc;
@@ -118,12 +119,12 @@ int main(void)
 				x3 -= xc;
 				y3 -= yc;
 
-				x1 = (x1 * cos(Turn)) - (y1 * sin(Turn));
-				y1 = (x1 * sin(Turn)) + (y1 * cos(Turn));
-				x2 = (x2 * cos(Turn)) - (y2 * sin(Turn));
-				y2 = (x2 * sin(Turn)) + (y2 * cos(Turn));
-				x3 = (x3 * cos(Turn)) - (y3 * sin(Turn));
-				y3 = (x3 * sin(Turn)) + (y3 * cos(Turn));
+				x1 = ((x1 * cos(Turn)) - (y1 * sin(Turn))) * 1.0003125;
+				y1 = ((x1 * sin(Turn)) + (y1 * cos(Turn))) * 1.0003125;
+				x2 = ((x2 * cos(Turn)) - (y2 * sin(Turn))) * 1.0003125;
+				y2 = ((x2 * sin(Turn)) + (y2 * cos(Turn))) * 1.0003125;
+				x3 = ((x3 * cos(Turn)) - (y3 * sin(Turn))) * 1.0003125;
+				y3 = ((x3 * sin(Turn)) + (y3 * cos(Turn))) * 1.0003125;
 
 				x1 += xc;
 				y1 += yc;
@@ -195,31 +196,17 @@ int main(void)
 			}
 			}
 
+			
+			
 			cleardevice();
-			setcolor(RGB(100, 100, 255));
-			line(x1, y1, x2, y2);
-			setcolor(RGB(0, 255, 0));
-			line(x3, y3, x2, y2);
-			setcolor(RGB(255, 200, 0));
-			line(x1, y1, x3, y3);
-
-			/*for (i = 0; i < 3; i++) {
-				for (j = 0; j < 3; j++) {
-					cout << FIG[i][j] << "  ";
-				}
-				cout << endl;
-			}
-			cout << endl;
 
 			setcolor(RGB(100, 100, 255));
-			line(FIG[0][0], FIG[0][1], FIG[1][0], FIG[1][1]);
+			line(round(x1), round(y1), round(x2), round(y2));
 			setcolor(RGB(0, 255, 0));
-			line(FIG[2][0], FIG[2][1], FIG[1][0], FIG[1][1]);
+			line(round(x3), round(y3), round(x2), round(y2));
 			setcolor(RGB(255, 200, 0));
-			line(FIG[0][0], FIG[0][1], FIG[2][0], FIG[2][1]);*/
-
+			line(round(x1), round(y1), round(x3), round(y3));
 		}
 	}
-	//closegraph();
 	return 0;
 }
